@@ -12,6 +12,10 @@ import Alamofire
 import SwiftyJSON
 import PromiseKit
 
+let mainColor = UIColor.init(red: 255, green: 56, blue: 44, alpha: 1.0)
+let backColor = UIColor.init(red: 238, green: 238, blue: 238, alpha: 1.0)
+let negative = UIColor.init(red: 157, green: 157, blue: 157, alpha: 1.0)
+
 class SecondViewController: UIViewController {
     var myCollectionView : UICollectionView!
     
@@ -19,6 +23,12 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.navigationItem.title = "郵便画像リスト"
+        self.tabBarController?.navigationController?.navigationBar.barTintColor = .red
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
         
         getData()
         
@@ -37,7 +47,7 @@ class SecondViewController: UIViewController {
         myCollectionView.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         myCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section")
         myCollectionView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 200)
-        myCollectionView.backgroundColor = UIColor.white
+        myCollectionView.backgroundColor = backColor
         myCollectionView.alwaysBounceVertical = true
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
@@ -134,6 +144,8 @@ class HeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.backgroundColor = backColor
         
         titleLabel = UILabel()
         titleLabel.sizeToFit()
