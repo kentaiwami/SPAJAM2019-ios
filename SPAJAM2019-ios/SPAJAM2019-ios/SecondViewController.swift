@@ -71,17 +71,19 @@ class SecondViewController: UIViewController {
         header.width(self.view.frame.width)
         header.height(headerHeight)
         
+        let buttonSize = 0.6 as CGFloat
+        
         allBtn = UIButton()
-        allBtn.setImage(UIImage(named: "zenbu_on")?.scaleImage(scaleSize: 0.5), for: .normal)
+        allBtn.setImage(UIImage(named: "zenbu_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
 
         hagaki = UIButton()
-        hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: 0.5), for: .normal)
+        hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
         
         chirashi = UIButton()
-        chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: 0.5), for: .normal)
+        chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
 
         huzai = UIButton()
-        huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: 0.5), for: .normal)
+        huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
         
         header.addSubview(allBtn)
         header.addSubview(hagaki)
