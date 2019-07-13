@@ -41,7 +41,7 @@ class SettingViewController: UIViewController {
         logo.height(logo.frame.height)
         
         let button = UIButton()
-        let buttonImage = UIImage(named: "hajimeru.png")?.scaleImage(scaleSize: 1.0)
+        let buttonImage = UIImage(named: "hajimeru2.png")?.scaleImage(scaleSize: 1.0)
         button.setImage(buttonImage, for: .normal)
         button.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
         self.view.addSubview(button)
@@ -58,7 +58,10 @@ class SettingViewController: UIViewController {
     }
     
     @objc func tapButton(_ sender: UIButton) {
-        let vc = AuthViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController2 = storyboard.instantiateViewController(withIdentifier: "root")
+        present(viewController2, animated: true, completion: nil)
+//        let vc = AuthViewController()
+//        self.navigationController?.pushViewController(viewController2, animated: true)
     }
 }

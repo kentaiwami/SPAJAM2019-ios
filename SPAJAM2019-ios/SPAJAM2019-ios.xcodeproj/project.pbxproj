@@ -36,6 +36,7 @@
 		373781BC22DA7B2C00B16BB6 /* hagaki_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781BA22DA7B2B00B16BB6 /* hagaki_off.png */; };
 		373781BF22DA7B5100B16BB6 /* huzai_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781BD22DA7B5100B16BB6 /* huzai_off.png */; };
 		373781C022DA7B5100B16BB6 /* huzai_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781BE22DA7B5100B16BB6 /* huzai_on.png */; };
+		373781C222DA93DB00B16BB6 /* hajimeru2.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781C122DA93DA00B16BB6 /* hajimeru2.png */; };
 		7853B3CB584C28105EE23EE4 /* Pods_SPAJAM2019_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A469573E8BDFFBC2045D72 /* Pods_SPAJAM2019_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		373781BA22DA7B2B00B16BB6 /* hagaki_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hagaki_off.png; sourceTree = "<group>"; };
 		373781BD22DA7B5100B16BB6 /* huzai_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huzai_off.png; sourceTree = "<group>"; };
 		373781BE22DA7B5100B16BB6 /* huzai_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huzai_on.png; sourceTree = "<group>"; };
+		373781C122DA93DA00B16BB6 /* hajimeru2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hajimeru2.png; sourceTree = "<group>"; };
 		70CA85EBE300A2B679409262 /* Pods-SPAJAM2019-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAJAM2019-ios.release.xcconfig"; path = "Target Support Files/Pods-SPAJAM2019-ios/Pods-SPAJAM2019-ios.release.xcconfig"; sourceTree = "<group>"; };
 		F3A469573E8BDFFBC2045D72 /* Pods_SPAJAM2019_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPAJAM2019_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				373781B622DA7AEC00B16BB6 /* zenbu_off.png */,
 				373781B522DA7AEC00B16BB6 /* zenbu_on.png */,
 				373781BA22DA7B2B00B16BB6 /* hagaki_off.png */,
+				373781C122DA93DA00B16BB6 /* hajimeru2.png */,
 				373781BD22DA7B5100B16BB6 /* huzai_off.png */,
 				373781BE22DA7B5100B16BB6 /* huzai_on.png */,
 				373781B922DA7B2B00B16BB6 /* hagaki_on.png */,
@@ -238,6 +241,7 @@
 				373781B422DA7AD500B16BB6 /* chirashi_off.png in Resources */,
 				3737817922D9BC0200B16BB6 /* Main.storyboard in Resources */,
 				373781A822DA4A8100B16BB6 /* logo.png in Resources */,
+				373781C222DA93DB00B16BB6 /* hajimeru2.png in Resources */,
 				373781BC22DA7B2C00B16BB6 /* hagaki_off.png in Resources */,
 				373781BF22DA7B5100B16BB6 /* huzai_off.png in Resources */,
 				373781C022DA7B5100B16BB6 /* huzai_on.png in Resources */,

@@ -14,6 +14,7 @@ import PromiseKit
 
 class SecondViewController: UIViewController {
     var myCollectionView : UICollectionView!
+    var refreshControll = UIRefreshControl()
     
     var data: [DayPost] = []
     var filterd: [DayPost] = []
@@ -47,6 +48,8 @@ class SecondViewController: UIViewController {
         myCollectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
         myCollectionView.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         myCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section")
+        myCollectionView.refreshControl = refreshControll
+        refreshControll.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
         myCollectionView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         myCollectionView.backgroundColor = Utility().getBackColor()
         myCollectionView.alwaysBounceVertical = true
@@ -114,12 +117,20 @@ class SecondViewController: UIViewController {
 //        myCollectionView.topToBottom(of: header, offset: 50)
     }
     
+    @objc func refresh(sender: UIRefreshControl) {
+        refreshControll.beginRefreshing()
+        getData()
+    }
+    
+    var tapButton = 1
+    
     @objc func tapButton(_ sender: UIButton) {
         let buttonSize = 0.6 as CGFloat
         
         switch sender.tag {
         case 1:
             //all
+            tapButton = 1
             allBtn.setImage(UIImage(named: "zenbu_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
@@ -127,6 +138,7 @@ class SecondViewController: UIViewController {
             reloadData(type: "all")
         case 2:
             //hagaki
+            tapButton = 2
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
@@ -134,6 +146,7 @@ class SecondViewController: UIViewController {
             reloadData(type: "hagaki")
         case 3:
             //chirashi
+            tapButton = 3
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
@@ -141,6 +154,7 @@ class SecondViewController: UIViewController {
             reloadData(type: "chirashi")
         case 4:
             //huzai
+            tapButton = 4
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
@@ -189,7 +203,6 @@ class SecondViewController: UIViewController {
             filterd.sort { (dayPost1, dayPost2) -> Bool in
                 return dayPost1.date > dayPost2.date
             }
-            
         }
         
         self.myCollectionView.reloadData()
@@ -197,6 +210,8 @@ class SecondViewController: UIViewController {
     
     func getData() {
         API().getPostsData().done { (json) in
+            self.refreshControll.endRefreshing()
+            self.data = []
 //            print(json)
 //            self.setDummyData()
             
@@ -222,6 +237,10 @@ class SecondViewController: UIViewController {
             
             self.filterd = self.data
             
+            let dummyButton = UIButton()
+            dummyButton.tag = self.tapButton
+            
+            self.tapButton(dummyButton)
             self.myCollectionView.reloadData()
         }.catch { (err) in
             //
