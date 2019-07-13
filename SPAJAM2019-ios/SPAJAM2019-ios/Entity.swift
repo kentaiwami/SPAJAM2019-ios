@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SwiftMoment
 
-struct Data {
+struct Post {
     var id: Int
-    var date: Date
+    var date: Moment
     var image: String
 }
