@@ -12,10 +12,6 @@ import Alamofire
 import SwiftyJSON
 import PromiseKit
 
-let mainColor = UIColor.init(red: 255, green: 56, blue: 44, alpha: 1.0)
-let backColor = UIColor.init(red: 238, green: 238, blue: 238, alpha: 1.0)
-let negative = UIColor.init(red: 157, green: 157, blue: 157, alpha: 1.0)
-
 class SecondViewController: UIViewController {
     var myCollectionView : UICollectionView!
     
@@ -24,11 +20,7 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.navigationItem.title = "郵便画像リスト"
-        self.tabBarController?.navigationController?.navigationBar.barTintColor = .red
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
+        self.title = "郵便画像リスト"
         
         getData()
         
@@ -47,7 +39,7 @@ class SecondViewController: UIViewController {
         myCollectionView.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         myCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section")
         myCollectionView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 200)
-        myCollectionView.backgroundColor = backColor
+        myCollectionView.backgroundColor = Utility().getBackColor()
         myCollectionView.alwaysBounceVertical = true
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
@@ -56,18 +48,28 @@ class SecondViewController: UIViewController {
     }
     
     func getData() {
+        API().getPostsData().done { (json) in
+            print(json)
+            self.setDummyData()
+            self.myCollectionView.reloadData()
+        }.catch { (err) in
+            //
+        }
+    }
+    
+    func setDummyData() {
         let now = moment()
         let dummy = "http://wwwjp.kodak.com/JP/images/ja/digital/digitalcamera/performance/p880/sample/P880_02.jpg"
-        let data1a = Post(id: 1, date: now, image: dummy)
-        let data1b = Post(id: 1, date: now, image: dummy)
-        let data1c = Post(id: 1, date: now, image: dummy)
+        let data1a = Post(id: 1, date: now, front: dummy, back: dummy)
+        let data1b = Post(id: 1, date: now, front: dummy, back: dummy)
+        let data1c = Post(id: 1, date: now, front: dummy, back: dummy)
         
-        let data2a = Post(id: 1, date: now-1.days, image: dummy)
-        let data2b = Post(id: 1, date: now-1.days, image: dummy)
-        let data2c = Post(id: 1, date: now-1.days, image: dummy)
+        let data2a = Post(id: 1, date: now, front: dummy, back: dummy)
+        let data2b = Post(id: 1, date: now, front: dummy, back: dummy)
+        let data2c = Post(id: 1, date: now, front: dummy, back: dummy)
         
-        let data3a = Post(id: 1, date: now-2.days, image: dummy)
-        let data3b = Post(id: 1, date: now-2.days, image: dummy)
+        let data3a = Post(id: 1, date: now, front: dummy, back: dummy)
+        let data3b = Post(id: 1, date: now, front: dummy, back: dummy)
         
         data = [
             [data1a, data1b, data1c],
@@ -85,7 +87,7 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CustomUICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath) as! CustomUICollectionViewCell
-        cell.setImageUrl(url: data[indexPath.section][indexPath.row].image)
+        cell.setImageUrl(url: data[indexPath.section][indexPath.row].front)
         
         return cell
     }
@@ -133,7 +135,9 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let detailVC = DetailViewController()
+        detailVC.setData(selectedData: data[indexPath.section][indexPath.row])
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
@@ -145,7 +149,7 @@ class HeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = backColor
+        self.backgroundColor = Utility().getBackColor()
         
         titleLabel = UILabel()
         titleLabel.sizeToFit()

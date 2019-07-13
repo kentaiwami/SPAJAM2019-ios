@@ -12,5 +12,6 @@ import SwiftMoment
 struct Post {
     var id: Int
     var date: Moment
-    var image: String
+    var front: String
+    var back: String
 }

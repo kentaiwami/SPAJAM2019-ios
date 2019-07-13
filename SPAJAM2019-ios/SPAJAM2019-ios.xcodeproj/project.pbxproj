@@ -17,6 +17,11 @@
 		3737818B22D9DE8500B16BB6 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3737818922D9DE8500B16BB6 /* PostCell.xib */; };
 		3737818C22D9DE8500B16BB6 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737818A22D9DE8500B16BB6 /* PostCell.swift */; };
 		3737818E22D9F5FA00B16BB6 /* CustomUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737818D22D9F5FA00B16BB6 /* CustomUICollectionViewCell.swift */; };
+		3737819022DA207D00B16BB6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737818F22DA207D00B16BB6 /* Utility.swift */; };
+		3737819222DA25D600B16BB6 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737819122DA25D600B16BB6 /* Extension.swift */; };
+		3737819422DA25FB00B16BB6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737819322DA25FB00B16BB6 /* API.swift */; };
+		3737819822DA2B6F00B16BB6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737819722DA2B6F00B16BB6 /* DetailViewController.swift */; };
+		3737819C22DA31E900B16BB6 /* MyNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737819B22DA31E900B16BB6 /* MyNavigationViewController.swift */; };
 		7853B3CB584C28105EE23EE4 /* Pods_SPAJAM2019_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A469573E8BDFFBC2045D72 /* Pods_SPAJAM2019_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +39,11 @@
 		3737818922D9DE8500B16BB6 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		3737818A22D9DE8500B16BB6 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		3737818D22D9F5FA00B16BB6 /* CustomUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUICollectionViewCell.swift; sourceTree = "<group>"; };
+		3737818F22DA207D00B16BB6 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		3737819122DA25D600B16BB6 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		3737819322DA25FB00B16BB6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3737819722DA2B6F00B16BB6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3737819B22DA31E900B16BB6 /* MyNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationViewController.swift; sourceTree = "<group>"; };
 		70CA85EBE300A2B679409262 /* Pods-SPAJAM2019-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAJAM2019-ios.release.xcconfig"; path = "Target Support Files/Pods-SPAJAM2019-ios/Pods-SPAJAM2019-ios.release.xcconfig"; sourceTree = "<group>"; };
 		F3A469573E8BDFFBC2045D72 /* Pods_SPAJAM2019_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPAJAM2019_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				3737818822D9DE6500B16BB6 /* Xib */,
-				3737818722D9C44500B16BB6 /* Setting */,
 				3737817122D9BC0100B16BB6 /* AppDelegate.swift */,
 				3737817322D9BC0100B16BB6 /* FirstViewController.swift */,
 				3737817522D9BC0100B16BB6 /* SecondViewController.swift */,
@@ -82,15 +91,13 @@
 				3737817F22D9BC0E00B16BB6 /* Info.plist */,
 				3737818522D9BCFA00B16BB6 /* Entity.swift */,
 				3737818D22D9F5FA00B16BB6 /* CustomUICollectionViewCell.swift */,
+				3737818F22DA207D00B16BB6 /* Utility.swift */,
+				3737819122DA25D600B16BB6 /* Extension.swift */,
+				3737819322DA25FB00B16BB6 /* API.swift */,
+				3737819722DA2B6F00B16BB6 /* DetailViewController.swift */,
+				3737819B22DA31E900B16BB6 /* MyNavigationViewController.swift */,
 			);
 			path = "SPAJAM2019-ios";
-			sourceTree = "<group>";
-		};
-		3737818722D9C44500B16BB6 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		3737818822D9DE6500B16BB6 /* Xib */ = {
@@ -235,12 +242,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3737819022DA207D00B16BB6 /* Utility.swift in Sources */,
 				3737818622D9BCFA00B16BB6 /* Entity.swift in Sources */,
 				3737818C22D9DE8500B16BB6 /* PostCell.swift in Sources */,
 				3737818E22D9F5FA00B16BB6 /* CustomUICollectionViewCell.swift in Sources */,
 				3737817622D9BC0100B16BB6 /* SecondViewController.swift in Sources */,
 				3737817222D9BC0100B16BB6 /* AppDelegate.swift in Sources */,
 				3737817422D9BC0100B16BB6 /* FirstViewController.swift in Sources */,
+				3737819C22DA31E900B16BB6 /* MyNavigationViewController.swift in Sources */,
+				3737819822DA2B6F00B16BB6 /* DetailViewController.swift in Sources */,
+				3737819422DA25FB00B16BB6 /* API.swift in Sources */,
+				3737819222DA25D600B16BB6 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
