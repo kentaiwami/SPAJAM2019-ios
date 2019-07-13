@@ -74,11 +74,11 @@ class DetailViewController: UIViewController {
         
         var type = ""
         if selectedData.type == "huzai" {
-            type = "不在通知です"
+            type = "不在通知"
         }else if selectedData.type == "hagaki" {
-            type = "ハガキです"
+            type = "ハガキ"
         }else {
-            type = "チラシです"
+            type = "チラシ"
         }
         
         let text3 = UILabel()

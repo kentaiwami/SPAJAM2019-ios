@@ -34,17 +34,30 @@ class SecondViewController: UIViewController {
         layout.headerReferenceSize = CGSize(width:100,height:margin2)
         layout.minimumInteritemSpacing = 0
         
+        let headerHeight = 150 as CGFloat
+        
         myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myCollectionView.frame = CGRect(x: 0, y: headerHeight, width: self.view.frame.width, height: self.view.frame.height - headerHeight)
         myCollectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
         myCollectionView.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         myCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section")
-        myCollectionView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 200)
+        myCollectionView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         myCollectionView.backgroundColor = Utility().getBackColor()
         myCollectionView.alwaysBounceVertical = true
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         
         self.view.addSubview(myCollectionView)
+        
+        let header = UIView()
+        header.backgroundColor = .red
+        self.view.addSubview(header)
+        
+        header.top(to: self.view)
+        header.width(self.view.frame.width)
+        header.height(headerHeight)
+        
+//        myCollectionView.topToBottom(of: header, offset: 50)
     }
     
     func getData() {
