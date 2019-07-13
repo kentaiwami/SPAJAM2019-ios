@@ -1,0 +1,18 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SPAJAM2019-ios' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SPAJAM2019-ios
+
+pod 'Alamofire'
+pod 'AlamofireImage'
+pod 'PopupDialog'
+pod 'PromiseKit'
+pod 'SwiftyJSON'
+pod 'StatusProvider'
+pod 'TinyConstraints'
+
+end
