@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class Utility {
     func getMainColor() -> UIColor {
-        return UIColor.init(red: 255/255, green: 56/255, blue: 44/255, alpha: 1.0)
+        return UIColor.init(red: 225/255, green: 56/255, blue: 44/255, alpha: 1.0)
     }
     
     func getBackColor() -> UIColor {

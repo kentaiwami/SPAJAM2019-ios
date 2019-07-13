@@ -15,7 +15,7 @@ import PromiseKit
 class SecondViewController: UIViewController {
     var myCollectionView : UICollectionView!
     
-    var data: [[Post]] = []
+    var data: [DayPost] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,45 +49,65 @@ class SecondViewController: UIViewController {
     
     func getData() {
         API().getPostsData().done { (json) in
-            print(json)
-            self.setDummyData()
+//            print(json)
+//            self.setDummyData()
+            
+            for dayObj in json.arrayValue {
+                print("*****************")
+                var posts:[Post] = []
+                
+                for post in dayObj["posts"].arrayValue {
+                    let fromformatter = DateFormatter()
+                    fromformatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"
+                    let date = fromformatter.date(from: post["date"].stringValue)!
+                    
+                    posts.append(Post(id: 1, date: moment(date), front: post["mail_img_url_front"].stringValue, back: post["mail_img_url_front"].stringValue, type: post["type"].stringValue))
+                }
+                
+                let fromformatter = DateFormatter()
+                fromformatter.dateFormat = "yyyy'-'MM'-'dd'"
+                let date = fromformatter.date(from: dayObj["day"].stringValue)!
+                
+                
+                self.data.append(DayPost(date: moment(date), posts: posts))
+            }
             self.myCollectionView.reloadData()
         }.catch { (err) in
             //
         }
     }
     
-    func setDummyData() {
-        let now = moment()
-        let dummy = "http://wwwjp.kodak.com/JP/images/ja/digital/digitalcamera/performance/p880/sample/P880_02.jpg"
-        let data1a = Post(id: 1, date: now, front: dummy, back: dummy)
-        let data1b = Post(id: 1, date: now, front: dummy, back: dummy)
-        let data1c = Post(id: 1, date: now, front: dummy, back: dummy)
-        
-        let data2a = Post(id: 1, date: now, front: dummy, back: dummy)
-        let data2b = Post(id: 1, date: now, front: dummy, back: dummy)
-        let data2c = Post(id: 1, date: now, front: dummy, back: dummy)
-        
-        let data3a = Post(id: 1, date: now, front: dummy, back: dummy)
-        let data3b = Post(id: 1, date: now, front: dummy, back: dummy)
-        
-        data = [
-            [data1a, data1b, data1c],
-            [data2a, data2b, data2c],
-            [data3a, data3b]
-        ]
-    }
+//    func setDummyData() {
+//        let now = moment()
+//        let dummy = "http://wwwjp.kodak.com/JP/images/ja/digital/digitalcamera/performance/p880/sample/P880_02.jpg"
+//        let data1a = Post(id: 1, date: now, front: dummy, back: dummy)
+//        let data1b = Post(id: 1, date: now, front: dummy, back: dummy)
+//        let data1c = Post(id: 1, date: now, front: dummy, back: dummy)
+//
+//        let data2a = Post(id: 1, date: now, front: dummy, back: dummy)
+//        let data2b = Post(id: 1, date: now, front: dummy, back: dummy)
+//        let data2c = Post(id: 1, date: now, front: dummy, back: dummy)
+//
+//        let data3a = Post(id: 1, date: now, front: dummy, back: dummy)
+//        let data3b = Post(id: 1, date: now, front: dummy, back: dummy)
+//
+//        data = [
+//            [data1a, data1b, data1c],
+//            [data2a, data2b, data2c],
+//            [data3a, data3b]
+//        ]
+//    }
 }
 
 
 extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data[section].count
+        return data[section].posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CustomUICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath) as! CustomUICollectionViewCell
-        cell.setImageUrl(url: data[indexPath.section][indexPath.row].front)
+        cell.setImageUrl(url: "http://222.158.219.195:3000/" + data[indexPath.section].posts[indexPath.row].front)
         
         return cell
     }
@@ -117,17 +137,17 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerID", for: indexPath) as! HeaderView
         
         let yesterday = moment()-1.days
-        let isEqualYear = moment().year == data[indexPath.section][indexPath.row].date.year
-        let isEqualMonth = moment().month == data[indexPath.section][indexPath.row].date.month
-        let isEqualDay = moment().day == data[indexPath.section][indexPath.row].date.day
-        let isYesterDay = isEqualYear && isEqualMonth && yesterday.day == data[indexPath.section][indexPath.row].date.day
+        let isEqualYear = moment().year == data[indexPath.section].posts[indexPath.row].date.year
+        let isEqualMonth = moment().month == data[indexPath.section].posts[indexPath.row].date.month
+        let isEqualDay = moment().day == data[indexPath.section].posts[indexPath.row].date.day
+        let isYesterDay = isEqualYear && isEqualMonth && yesterday.day == data[indexPath.section].posts[indexPath.row].date.day
         
         if isEqualYear && isEqualMonth && isEqualDay {
             reusableview.titleLabel.text = "今日"
         }else if isEqualYear && isEqualMonth && isYesterDay {
             reusableview.titleLabel.text = "昨日"
         }else {
-            let dateFormatted = data[indexPath.section][indexPath.row].date.format("M月d日")
+            let dateFormatted = data[indexPath.section].posts[indexPath.row].date.format("M月d日")
             reusableview.titleLabel.text = dateFormatted
         }
         
@@ -136,7 +156,7 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.setData(selectedData: data[indexPath.section][indexPath.row])
+        detailVC.setData(selectedData: data[indexPath.section].posts[indexPath.row])
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

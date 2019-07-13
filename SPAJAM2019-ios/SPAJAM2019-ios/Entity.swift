@@ -14,4 +14,10 @@ struct Post {
     var date: Moment
     var front: String
     var back: String
+    var type: String
+}
+
+struct DayPost {
+    var date: Moment
+    var posts: [Post]
 }
