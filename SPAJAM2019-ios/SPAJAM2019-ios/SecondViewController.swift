@@ -74,15 +74,23 @@ class SecondViewController: UIViewController {
         let buttonSize = 0.6 as CGFloat
         
         allBtn = UIButton()
+        allBtn.tag = 1
+        allBtn.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
         allBtn.setImage(UIImage(named: "zenbu_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
 
         hagaki = UIButton()
+        hagaki.tag = 2
+        hagaki.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
         hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
         
         chirashi = UIButton()
+        chirashi.tag = 3
+        chirashi.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
         chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
 
         huzai = UIButton()
+        huzai.tag = 4
+        huzai.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
         huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
         
         header.addSubview(allBtn)
@@ -103,6 +111,39 @@ class SecondViewController: UIViewController {
         huzai.topToBottom(of: label, offset: self.view.frame.width * 0.03)
         
 //        myCollectionView.topToBottom(of: header, offset: 50)
+    }
+    
+    @objc func tapButton(_ sender: UIButton) {
+        let buttonSize = 0.6 as CGFloat
+        
+        switch sender.tag {
+        case 1:
+            //all
+            allBtn.setImage(UIImage(named: "zenbu_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+        case 2:
+            //hagaki
+            allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            hagaki.setImage(UIImage(named: "hagaki_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+        case 3:
+            //chirashi
+            allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            chirashi.setImage(UIImage(named: "chirashi_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+        case 4:
+            //huzai
+            allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            huzai.setImage(UIImage(named: "huzai_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
+        default: break
+            //
+        }
     }
     
     func getData() {
