@@ -13,6 +13,7 @@
 		3737817922D9BC0200B16BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3737817722D9BC0200B16BB6 /* Main.storyboard */; };
 		3737817B22D9BC0E00B16BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3737817A22D9BC0E00B16BB6 /* Assets.xcassets */; };
 		3737817E22D9BC0E00B16BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3737817C22D9BC0E00B16BB6 /* LaunchScreen.storyboard */; };
+		3737818622D9BCFA00B16BB6 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737818522D9BCFA00B16BB6 /* Entity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3737817A22D9BC0E00B16BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3737817D22D9BC0E00B16BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3737817F22D9BC0E00B16BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3737818522D9BCFA00B16BB6 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3737817A22D9BC0E00B16BB6 /* Assets.xcassets */,
 				3737817C22D9BC0E00B16BB6 /* LaunchScreen.storyboard */,
 				3737817F22D9BC0E00B16BB6 /* Info.plist */,
+				3737818522D9BCFA00B16BB6 /* Entity.swift */,
 			);
 			path = "SPAJAM2019-ios";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3737818622D9BCFA00B16BB6 /* Entity.swift in Sources */,
 				3737817622D9BC0100B16BB6 /* SecondViewController.swift in Sources */,
 				3737817222D9BC0100B16BB6 /* AppDelegate.swift in Sources */,
 				3737817422D9BC0100B16BB6 /* FirstViewController.swift in Sources */,
