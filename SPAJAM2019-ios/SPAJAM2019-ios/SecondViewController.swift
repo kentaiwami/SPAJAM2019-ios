@@ -243,7 +243,7 @@ class SecondViewController: UIViewController {
             self.tapButton(dummyButton)
             self.myCollectionView.reloadData()
         }.catch { (err) in
-            //
+            Utility().showStandardAlert(title: "エラー", msg: "ネットワーク接続を確認してください。", vc: self)
         }
     }
     

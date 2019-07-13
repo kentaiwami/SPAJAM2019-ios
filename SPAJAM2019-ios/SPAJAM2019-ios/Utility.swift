@@ -10,6 +10,7 @@ import Foundation
 import PromiseKit
 import Alamofire
 import SwiftyJSON
+import PopupDialog
 
 class Utility {
     func getMainColor() -> UIColor {
@@ -39,12 +40,15 @@ class Utility {
                     if self.isHTTPStatus2XX(statusCode: response.response?.statusCode) && !json["code"].exists() {
                         seal.fulfill(json)
                     }else {
-                        let err_msg = json["msg"].stringValue + "[" + String(json["code"].intValue) + "]"
-                        seal.reject(NSError(domain: err_msg, code: (response.response?.statusCode)!))
+//                        showStandardAlert(title: "ネットワークエラー", msg: "ネットワーク接続を確認してください。", vc: <#T##UIViewController#>)
+//                        let err_msg = json["msg"].stringValue + "[" + String(json["code"].intValue) + "]"
+                        seal.reject(NSError(domain: "ネットワークエラー", code: -1))
+//                        seal.reject(NSError(domain: err_msg, code: (response.response?.statusCode)!))
                     }
                 case .failure(_):
-                    let err_msg = "エラーが発生しました[-1]"
-                    seal.reject(NSError(domain: err_msg, code: (response.response?.statusCode)!))
+                    seal.reject(NSError(domain: "ネットワークエラー", code: -1))
+//                    let err_msg = "エラーが発生しました[-1]"
+//                    seal.reject(NSError(domain: err_msg, code: (response.response?.statusCode)!))
                 }
             }
         }
@@ -61,5 +65,21 @@ class Utility {
             return false
         }
     }
+    
+    func showStandardAlert(title: String, msg: String, vc: UIViewController, isLeft: Bool = false, completion: @escaping (() -> Void) = {}) {
+        let button = DefaultButton(title: "OK", dismissOnTap: true) {}
+        let popup = PopupDialog(title: title, message: msg) {
+            completion()
+        }
+        popup.transitionStyle = .zoomIn
+        popup.addButtons([button])
+        
+        if isLeft {
+            PopupDialogDefaultView.appearance().messageTextAlignment = .left
+        }
+        
+        vc.present(popup, animated: true, completion: nil)
+    }
+
 
 }
