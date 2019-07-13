@@ -16,6 +16,7 @@ class SecondViewController: UIViewController {
     var myCollectionView : UICollectionView!
     
     var data: [DayPost] = []
+    var filterd: [DayPost] = []
     
     var allBtn: UIButton!
     var hagaki: UIButton!
@@ -123,27 +124,70 @@ class SecondViewController: UIViewController {
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            reloadData(type: "all")
         case 2:
             //hagaki
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            reloadData(type: "hagaki")
         case 3:
             //chirashi
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
             huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            reloadData(type: "chirashi")
         case 4:
             //huzai
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             huzai.setImage(UIImage(named: "huzai_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
+            reloadData(type: "huzai")
         default: break
             //
         }
+    }
+    
+    func reloadData(type: String) {
+        if type == "all" {
+            filterd = data
+        }else {
+            filterd = []
+            
+            var tmp:[Post] = []
+            
+            for hoge in data {
+                for hoge2 in hoge.posts {
+                    if hoge2.type == type {
+                        tmp.append(hoge2)
+                    }
+                }
+            }
+            
+            var tmp2:[String:[Post]] = [String:[Post]]()
+            
+            for hoge in tmp {
+                let key = "\(hoge.date.year)\(hoge.date.month)\(hoge.date.day)"
+                if tmp2[key] == nil {
+                    tmp2[key] = [hoge]
+                }else {
+                    tmp2[key] = tmp2[key]! + [hoge]
+                }
+            }
+            
+            let fromformatter = DateFormatter()
+            fromformatter.dateFormat = "yyyyMdd"
+            
+            for (key, value) in tmp2 {
+                let date = fromformatter.date(from: key)
+                filterd.append(DayPost(date: moment(date!), posts: value))
+            }
+        }
+        
+        self.myCollectionView.reloadData()
     }
     
     func getData() {
@@ -170,6 +214,9 @@ class SecondViewController: UIViewController {
                 
                 self.data.append(DayPost(date: moment(date), posts: posts))
             }
+            
+            self.filterd = self.data
+            
             self.myCollectionView.reloadData()
         }.catch { (err) in
             //
@@ -201,18 +248,18 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data[section].posts.count
+        return filterd[section].posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CustomUICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath) as! CustomUICollectionViewCell
-        cell.setImageUrl(url: "http://222.158.219.195:3000/" + data[indexPath.section].posts[indexPath.row].front)
+        cell.setImageUrl(url: "http://222.158.219.195:3000/" + filterd[indexPath.section].posts[indexPath.row].front)
         
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return data.count
+        return filterd.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -236,17 +283,17 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerID", for: indexPath) as! HeaderView
         
         let yesterday = moment()-1.days
-        let isEqualYear = moment().year == data[indexPath.section].posts[indexPath.row].date.year
-        let isEqualMonth = moment().month == data[indexPath.section].posts[indexPath.row].date.month
-        let isEqualDay = moment().day == data[indexPath.section].posts[indexPath.row].date.day
-        let isYesterDay = isEqualYear && isEqualMonth && yesterday.day == data[indexPath.section].posts[indexPath.row].date.day
+        let isEqualYear = moment().year == filterd[indexPath.section].posts[indexPath.row].date.year
+        let isEqualMonth = moment().month == filterd[indexPath.section].posts[indexPath.row].date.month
+        let isEqualDay = moment().day == filterd[indexPath.section].posts[indexPath.row].date.day
+        let isYesterDay = isEqualYear && isEqualMonth && yesterday.day == filterd[indexPath.section].posts[indexPath.row].date.day
         
         if isEqualYear && isEqualMonth && isEqualDay {
             reusableview.titleLabel.text = "今日"
         }else if isEqualYear && isEqualMonth && isYesterDay {
             reusableview.titleLabel.text = "昨日"
         }else {
-            let dateFormatted = data[indexPath.section].posts[indexPath.row].date.format("M月d日")
+            let dateFormatted = filterd[indexPath.section].posts[indexPath.row].date.format("M月d日")
             reusableview.titleLabel.text = dateFormatted
         }
         
@@ -255,7 +302,7 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.setData(selectedData: data[indexPath.section].posts[indexPath.row])
+        detailVC.setData(selectedData: filterd[indexPath.section].posts[indexPath.row])
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
