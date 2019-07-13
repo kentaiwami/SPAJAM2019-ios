@@ -28,6 +28,14 @@
 		373781AC22DA4B3400B16BB6 /* hajimeru.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781AB22DA4B3300B16BB6 /* hajimeru.png */; };
 		373781AE22DA4FD400B16BB6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373781AD22DA4FD400B16BB6 /* AuthViewController.swift */; };
 		373781B022DA54F300B16BB6 /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781AF22DA54F200B16BB6 /* post.png */; };
+		373781B322DA7AD500B16BB6 /* chirashi_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781B122DA7AD400B16BB6 /* chirashi_on.png */; };
+		373781B422DA7AD500B16BB6 /* chirashi_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781B222DA7AD400B16BB6 /* chirashi_off.png */; };
+		373781B722DA7AED00B16BB6 /* zenbu_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781B522DA7AEC00B16BB6 /* zenbu_on.png */; };
+		373781B822DA7AED00B16BB6 /* zenbu_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781B622DA7AEC00B16BB6 /* zenbu_off.png */; };
+		373781BB22DA7B2C00B16BB6 /* hagaki_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781B922DA7B2B00B16BB6 /* hagaki_on.png */; };
+		373781BC22DA7B2C00B16BB6 /* hagaki_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781BA22DA7B2B00B16BB6 /* hagaki_off.png */; };
+		373781BF22DA7B5100B16BB6 /* huzai_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781BD22DA7B5100B16BB6 /* huzai_off.png */; };
+		373781C022DA7B5100B16BB6 /* huzai_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 373781BE22DA7B5100B16BB6 /* huzai_on.png */; };
 		7853B3CB584C28105EE23EE4 /* Pods_SPAJAM2019_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A469573E8BDFFBC2045D72 /* Pods_SPAJAM2019_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +64,14 @@
 		373781AB22DA4B3300B16BB6 /* hajimeru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hajimeru.png; sourceTree = "<group>"; };
 		373781AD22DA4FD400B16BB6 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		373781AF22DA54F200B16BB6 /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
+		373781B122DA7AD400B16BB6 /* chirashi_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chirashi_on.png; sourceTree = "<group>"; };
+		373781B222DA7AD400B16BB6 /* chirashi_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chirashi_off.png; sourceTree = "<group>"; };
+		373781B522DA7AEC00B16BB6 /* zenbu_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zenbu_on.png; sourceTree = "<group>"; };
+		373781B622DA7AEC00B16BB6 /* zenbu_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zenbu_off.png; sourceTree = "<group>"; };
+		373781B922DA7B2B00B16BB6 /* hagaki_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hagaki_on.png; sourceTree = "<group>"; };
+		373781BA22DA7B2B00B16BB6 /* hagaki_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hagaki_off.png; sourceTree = "<group>"; };
+		373781BD22DA7B5100B16BB6 /* huzai_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huzai_off.png; sourceTree = "<group>"; };
+		373781BE22DA7B5100B16BB6 /* huzai_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huzai_on.png; sourceTree = "<group>"; };
 		70CA85EBE300A2B679409262 /* Pods-SPAJAM2019-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAJAM2019-ios.release.xcconfig"; path = "Target Support Files/Pods-SPAJAM2019-ios/Pods-SPAJAM2019-ios.release.xcconfig"; sourceTree = "<group>"; };
 		F3A469573E8BDFFBC2045D72 /* Pods_SPAJAM2019_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPAJAM2019_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +112,14 @@
 				373781A722DA4A7F00B16BB6 /* logo.png */,
 				3737819F22DA3D4000B16BB6 /* sample.png */,
 				373781AB22DA4B3300B16BB6 /* hajimeru.png */,
+				373781B222DA7AD400B16BB6 /* chirashi_off.png */,
+				373781B622DA7AEC00B16BB6 /* zenbu_off.png */,
+				373781B522DA7AEC00B16BB6 /* zenbu_on.png */,
+				373781BA22DA7B2B00B16BB6 /* hagaki_off.png */,
+				373781BD22DA7B5100B16BB6 /* huzai_off.png */,
+				373781BE22DA7B5100B16BB6 /* huzai_on.png */,
+				373781B922DA7B2B00B16BB6 /* hagaki_on.png */,
+				373781B122DA7AD400B16BB6 /* chirashi_on.png */,
 				373781AF22DA54F200B16BB6 /* post.png */,
 				3737818822D9DE6500B16BB6 /* Xib */,
 				3737817122D9BC0100B16BB6 /* AppDelegate.swift */,
@@ -208,10 +232,18 @@
 				3737818B22D9DE8500B16BB6 /* PostCell.xib in Resources */,
 				3737817B22D9BC0E00B16BB6 /* Assets.xcassets in Resources */,
 				373781AC22DA4B3400B16BB6 /* hajimeru.png in Resources */,
+				373781B722DA7AED00B16BB6 /* zenbu_on.png in Resources */,
+				373781B322DA7AD500B16BB6 /* chirashi_on.png in Resources */,
 				373781B022DA54F300B16BB6 /* post.png in Resources */,
+				373781B422DA7AD500B16BB6 /* chirashi_off.png in Resources */,
 				3737817922D9BC0200B16BB6 /* Main.storyboard in Resources */,
 				373781A822DA4A8100B16BB6 /* logo.png in Resources */,
+				373781BC22DA7B2C00B16BB6 /* hagaki_off.png in Resources */,
+				373781BF22DA7B5100B16BB6 /* huzai_off.png in Resources */,
+				373781C022DA7B5100B16BB6 /* huzai_on.png in Resources */,
+				373781B822DA7AED00B16BB6 /* zenbu_off.png in Resources */,
 				373781A022DA3D4000B16BB6 /* sample.png in Resources */,
+				373781BB22DA7B2C00B16BB6 /* hagaki_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,11 @@ class SecondViewController: UIViewController {
     
     var data: [DayPost] = []
     
+    var allBtn: UIButton!
+    var hagaki: UIButton!
+    var chirashi: UIButton!
+    var huzai: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,12 +55,50 @@ class SecondViewController: UIViewController {
         self.view.addSubview(myCollectionView)
         
         let header = UIView()
-        header.backgroundColor = .red
+        header.backgroundColor = .white
         self.view.addSubview(header)
+        
+        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
+        
+        let label = UILabel()
+        label.text = "表示アイテム"
+        label.sizeToFit()
+        
+        header.addSubview(label)
+        label.top(to: header, offset: navBarHeight!+25)
         
         header.top(to: self.view)
         header.width(self.view.frame.width)
         header.height(headerHeight)
+        
+        allBtn = UIButton()
+        allBtn.setImage(UIImage(named: "zenbu_on")?.scaleImage(scaleSize: 0.5), for: .normal)
+
+        hagaki = UIButton()
+        hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: 0.5), for: .normal)
+        
+        chirashi = UIButton()
+        chirashi.setImage(UIImage(named: "chirashi_off")?.scaleImage(scaleSize: 0.5), for: .normal)
+
+        huzai = UIButton()
+        huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: 0.5), for: .normal)
+        
+        header.addSubview(allBtn)
+        header.addSubview(hagaki)
+        header.addSubview(chirashi)
+        header.addSubview(huzai)
+        
+        allBtn.left(to: header)
+        allBtn.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+//        label.top(to: header, offset: navBarHeight!+25)
+        hagaki.leftToRight(of: allBtn, offset: self.view.frame.width * 0.03)
+        hagaki.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+        
+        chirashi.leftToRight(of: hagaki, offset: self.view.frame.width * 0.03)
+        chirashi.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+        
+        huzai.leftToRight(of: chirashi, offset: self.view.frame.width * 0.03)
+        huzai.topToBottom(of: label, offset: self.view.frame.width * 0.03)
         
 //        myCollectionView.topToBottom(of: header, offset: 50)
     }
