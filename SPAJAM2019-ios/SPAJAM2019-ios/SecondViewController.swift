@@ -185,6 +185,11 @@ class SecondViewController: UIViewController {
                 let date = fromformatter.date(from: key)
                 filterd.append(DayPost(date: moment(date!), posts: value))
             }
+            
+            filterd.sort { (dayPost1, dayPost2) -> Bool in
+                return dayPost1.date > dayPost2.date
+            }
+            
         }
         
         self.myCollectionView.reloadData()
