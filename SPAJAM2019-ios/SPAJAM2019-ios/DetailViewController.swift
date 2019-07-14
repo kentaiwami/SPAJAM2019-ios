@@ -57,19 +57,20 @@ class DetailViewController: UIViewController {
         footer.backgroundColor = UIColor.white
         sc.addSubview(footer)
         
-//        footer.topToBottom(of: backImage, offset: 20)
-        footer.topToBottom(of: self.view, offset: -175)
+        let footerHeight = 130 as CGFloat
+        
+        footer.topToBottom(of: self.view, offset: -footerHeight)
         footer.width(self.view.frame.width)
-        footer.height(175)
+        footer.height(footerHeight)
         
         let text1 = UILabel()
         text1.text = "\(selectedData.date.month)月\(selectedData.date.day)日に投稿されました。"
-        text1.font = UIFont.boldSystemFont(ofSize: 32)
+        text1.font = UIFont.boldSystemFont(ofSize: 20)
         text1.sizeToFit()
         
         let text2 = UILabel()
         text2.text = "時刻：\(selectedData.date.hour)時\(selectedData.date.minute)分"
-        text2.font = UIFont.systemFont(ofSize: 22)
+        text2.font = UIFont.systemFont(ofSize: 16)
         text2.sizeToFit()
         
         var type = ""
@@ -83,7 +84,7 @@ class DetailViewController: UIViewController {
         
         let text3 = UILabel()
         text3.text = type
-        text3.font = UIFont.systemFont(ofSize: 22)
+        text3.font = UIFont.systemFont(ofSize: 16)
         text3.sizeToFit()
         
         
@@ -92,11 +93,11 @@ class DetailViewController: UIViewController {
         footer.addSubview(text3)
         
         text1.top(to: footer, offset: self.view.frame.width * 0.06)
-        text1.left(to: footer)
+        text1.left(to: footer, offset: self.view.frame.width * 0.04)
         text2.topToBottom(of: text1, offset: self.view.frame.width * 0.04)
-        text2.left(to: footer)
+        text2.left(to: footer, offset: self.view.frame.width * 0.04)
         text3.topToBottom(of: text2, offset: self.view.frame.width * 0.02)
-        text3.left(to: footer)
+        text3.left(to: footer, offset: self.view.frame.width * 0.04)
         
         self.view.addSubview(footer)
 //        footer.topToBottom(of: sc, offset: 100)

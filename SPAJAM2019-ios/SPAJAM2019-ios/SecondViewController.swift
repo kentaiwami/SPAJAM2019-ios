@@ -70,12 +70,14 @@ class SecondViewController: UIViewController {
         
         header.addSubview(label)
         label.top(to: header, offset: navBarHeight!+25)
+        label.left(to: header, offset: self.view.frame.width * 0.04)
         
         header.top(to: self.view)
         header.width(self.view.frame.width)
         header.height(headerHeight)
         
         let buttonSize = 0.6 as CGFloat
+        let buttonMergin = 0.02 as CGFloat
         
         allBtn = UIButton()
         allBtn.tag = 1
@@ -102,17 +104,17 @@ class SecondViewController: UIViewController {
         header.addSubview(chirashi)
         header.addSubview(huzai)
         
-        allBtn.left(to: header)
-        allBtn.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+        allBtn.left(to: header, offset: self.view.frame.width * 0.04)
+        allBtn.topToBottom(of: label, offset: self.view.frame.width * buttonMergin)
 //        label.top(to: header, offset: navBarHeight!+25)
-        hagaki.leftToRight(of: allBtn, offset: self.view.frame.width * 0.03)
-        hagaki.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+        hagaki.leftToRight(of: allBtn, offset: self.view.frame.width * buttonMergin)
+        hagaki.topToBottom(of: label, offset: self.view.frame.width * buttonMergin)
         
-        chirashi.leftToRight(of: hagaki, offset: self.view.frame.width * 0.03)
-        chirashi.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+        chirashi.leftToRight(of: hagaki, offset: self.view.frame.width * buttonMergin)
+        chirashi.topToBottom(of: label, offset: self.view.frame.width * buttonMergin)
         
-        huzai.leftToRight(of: chirashi, offset: self.view.frame.width * 0.03)
-        huzai.topToBottom(of: label, offset: self.view.frame.width * 0.03)
+        huzai.leftToRight(of: chirashi, offset: self.view.frame.width * buttonMergin)
+        huzai.topToBottom(of: label, offset: self.view.frame.width * buttonMergin)
         
 //        myCollectionView.topToBottom(of: header, offset: 50)
     }
@@ -145,13 +147,13 @@ class SecondViewController: UIViewController {
             huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             reloadData(type: "hagaki")
         case 3:
-            //chirashi
+            //tirasi
             tapButton = 3
             allBtn.setImage(UIImage(named: "zenbu_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             hagaki.setImage(UIImage(named: "hagaki_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
             chirashi.setImage(UIImage(named: "chirashi_on")?.scaleImage(scaleSize: buttonSize), for: .normal)
             huzai.setImage(UIImage(named: "huzai_off")?.scaleImage(scaleSize: buttonSize), for: .normal)
-            reloadData(type: "chirashi")
+            reloadData(type: "tirasi")
         case 4:
             //huzai
             tapButton = 4
@@ -212,11 +214,8 @@ class SecondViewController: UIViewController {
         API().getPostsData().done { (json) in
             self.refreshControll.endRefreshing()
             self.data = []
-//            print(json)
-//            self.setDummyData()
             
             for dayObj in json.arrayValue {
-                print("*****************")
                 var posts:[Post] = []
                 
                 for post in dayObj["posts"].arrayValue {
@@ -224,7 +223,7 @@ class SecondViewController: UIViewController {
                     fromformatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"
                     let date = fromformatter.date(from: post["date"].stringValue)!
                     
-                    posts.append(Post(id: 1, date: moment(date), front: post["mail_img_url_front"].stringValue, back: post["mail_img_url_front"].stringValue, type: post["type"].stringValue))
+                    posts.append(Post(id: 1, date: moment(date)+9.hours, front: post["mail_img_url_front"].stringValue, back: post["mail_img_url_front"].stringValue, type: post["type"].stringValue))
                 }
                 
                 let fromformatter = DateFormatter()
@@ -347,6 +346,7 @@ class HeaderView: UICollectionReusableView {
         self.addSubview(titleLabel)
         
         titleLabel.centerY(to: self)
+        titleLabel.left(to: self, offset: self.frame.width * 0.04)
     }
     
     required init?(coder aDecoder: NSCoder) {
