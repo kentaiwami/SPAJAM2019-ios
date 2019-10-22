@@ -21,5 +21,7 @@ class MyNavigationViewController: UINavigationController {
             // 文字の色
             .foregroundColor: UIColor.white
         ]
+        
+//        self.modalPresentationStyle = .fullScreen
     }
 }

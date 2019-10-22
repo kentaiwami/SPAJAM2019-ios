@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
         sc.edges(to: self.view)
         
         let frontImage = UIImageView()
-        let url = "http://222.158.219.195:3000/" + selectedData.front
+        let url = "http://3.115.146.8:3000/" + selectedData.front
         let encURL = URL(string: url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
         frontImage.af_setImage(withURL: encURL)
         frontImage.contentMode = .scaleAspectFit

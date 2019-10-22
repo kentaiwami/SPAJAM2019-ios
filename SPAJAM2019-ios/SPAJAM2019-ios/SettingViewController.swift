@@ -60,6 +60,7 @@ class SettingViewController: UIViewController {
     @objc func tapButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController2 = storyboard.instantiateViewController(withIdentifier: "root")
+        viewController2.modalPresentationStyle = .fullScreen
         present(viewController2, animated: true, completion: nil)
 //        let vc = AuthViewController()
 //        self.navigationController?.pushViewController(viewController2, animated: true)

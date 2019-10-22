@@ -12,6 +12,6 @@ import SwiftyJSON
 
 class API {
     func getPostsData() -> Promise<JSON> {
-        return Utility().get(url: "http://222.158.219.195:3000/mail")
+        return Utility().get(url: "http://3.115.146.8:3000/mail")
     }
 }

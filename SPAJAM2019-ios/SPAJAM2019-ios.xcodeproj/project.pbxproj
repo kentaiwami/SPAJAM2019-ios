@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		13C34238C516DC38B90CDFB2 /* Pods-SPAJAM2019-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAJAM2019-ios.debug.xcconfig"; path = "Target Support Files/Pods-SPAJAM2019-ios/Pods-SPAJAM2019-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		3737816E22D9BC0100B16BB6 /* SPAJAM2019-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPAJAM2019-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3737816E22D9BC0100B16BB6 /* Posted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Posted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3737817122D9BC0100B16BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3737817322D9BC0100B16BB6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		3737817522D9BC0100B16BB6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		3737816F22D9BC0100B16BB6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3737816E22D9BC0100B16BB6 /* SPAJAM2019-ios.app */,
+				3737816E22D9BC0100B16BB6 /* Posted.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			);
 			name = "SPAJAM2019-ios";
 			productName = "SPAJAM2019-ios";
-			productReference = 3737816E22D9BC0100B16BB6 /* SPAJAM2019-ios.app */;
+			productReference = 3737816E22D9BC0100B16BB6 /* Posted.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -389,7 +389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -444,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -462,13 +462,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLVYAZUQZL;
 				INFOPLIST_FILE = "SPAJAM2019-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Kenta.SPAJAM2019-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Posted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -482,13 +482,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLVYAZUQZL;
 				INFOPLIST_FILE = "SPAJAM2019-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Kenta.SPAJAM2019-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Posted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -195,7 +195,7 @@ class SecondViewController: UIViewController {
             }
             
             let fromformatter = DateFormatter()
-            fromformatter.dateFormat = "yyyyMdd"
+            fromformatter.dateFormat = "yyyyMMdd"
             
             for (key, value) in tmp2 {
                 let date = fromformatter.date(from: key)
@@ -276,7 +276,7 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CustomUICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath) as! CustomUICollectionViewCell
-        cell.setImageUrl(url: "http://222.158.219.195:3000/" + filterd[indexPath.section].posts[indexPath.row].front)
+        cell.setImageUrl(url: "http://3.115.146.8:3000/" + filterd[indexPath.section].posts[indexPath.row].front)
         
         return cell
     }
@@ -325,7 +325,9 @@ extension SecondViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+//        detailVC.modalPresentationStyle = .fullScreen
         detailVC.setData(selectedData: filterd[indexPath.section].posts[indexPath.row])
+//        self.navigationController?.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
